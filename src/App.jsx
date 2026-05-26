@@ -404,11 +404,11 @@ export default function App() {
         <div className="slideshow">
 
           {[
-            "https://cdn.discordapp.com/attachments/1404907350497951765/1508794066232541224/Snapchat-935532469.jpg",
-            "https://cdn.discordapp.com/attachments/1404907350497951765/1508794066647912549/Snapchat-987898721.jpg",
-            "https://cdn.discordapp.com/attachments/1404907350497951765/1508794066861690920/IMG_20260524_141512_430.jpg",
-            "https://cdn.discordapp.com/attachments/1404907350497951765/1508794067180326922/IMG_20260524_141526_382.jpg",
-            "https://cdn.discordapp.com/attachments/1404907350497951765/1508794067474059345/Snapchat-98385106.jpg"
+            "https://i.ibb.co/Qq9BgKC/IMG-20260524-141526-382.jpg",
+            "https://i.ibb.co/gbzFSqTn/IMG-20260524-141512-430.jpg",
+            "https://i.ibb.co/jv9d9pwr/Snapchat-987898721.jpg",
+            "https://i.ibb.co/9HVrfKzf/Snapchat-935532469.jpg",
+            "https://i.ibb.co/Vc8SYCqM/Snapchat-98385106.jpg"
           ].map((pic, index) => (
 
             <div className="slide" key={index}>
