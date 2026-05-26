@@ -370,8 +370,17 @@ export default function App() {
           {[1,2,3,4,5].map((item) => (
             <div className="slide" key={item}>
 
-              <div className="slide-heart">
-                💖
+            <img
+  src="https://cdn.discordapp.com/attachments/1404907350497951765/1508794066232541224/Snapchat-935532469.jpg?ex=6a16d579&is=6a1583f9&hm=08fcd0bb5673397aed2672dcf97a7b872de29f75ddf594989ed38cbd79e222e4&"
+  alt="Shaima"
+  style={{
+    width: "160px",
+    height: "220px",
+    objectFit: "cover",
+    borderRadius: "25px",
+    border: "4px solid white"
+  }}
+/>
               </div>
 
               <h2>Shaima</h2>
