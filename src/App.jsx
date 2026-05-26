@@ -183,18 +183,16 @@ export default function App() {
           margin-bottom:30px;
         }
 
-        .line{
+.line{
   margin:25px 0;
   font-size:22px;
   color:#ffe3f4;
-  overflow:hidden;
-  border-right:3px solid #ff4da6;
-  width:0;
   white-space:normal;
   word-break:break-word;
-  display:inline-block;
+  display:block;
   max-width:100%;
-  animation:fadeTyping 2s ease forwards, blink .7s infinite;
+  opacity:0;
+  animation:fadeTyping 2s ease forwards;
 }
 
         .line2{
