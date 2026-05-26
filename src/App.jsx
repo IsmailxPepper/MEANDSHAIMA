@@ -375,7 +375,7 @@ export default function App() {
     "https://cdn.discordapp.com/attachments/1404907350497951765/1508794067474059345/Snapchat-98385106.jpg?ex=6a16d579&is=6a1583f9&hm=a83cb04e2229a34a89d75daec4128607ea9097d02954efbbe6f4decfedb73ce7&"
   ].map((pic, index) => (
     
-    <div className="slide" key={index}>
+        <div className="slide" key={index}>
 
       <img
         src={pic}
@@ -401,6 +401,8 @@ export default function App() {
 
 </div>
 
-        </>
+      </div>
+
+    </>
   );
 }
