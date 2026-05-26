@@ -287,9 +287,8 @@ const [loveMessage, setLoveMessage] = useState("");
             <p className="desc">
               Shaima, your smile feels like home and your love makes every day beautiful 💕
             </p>
-
-            <div className="buttons">
-             <div className="buttons">
+            
+<div className="buttons">
 
   <button
     className="btn pink-btn"
