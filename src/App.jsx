@@ -3,7 +3,8 @@ import { useState } from "react";
 export default function App() {
   const [showHug, setShowHug] = useState(false);
   const [showKiss, setShowKiss] = useState(false);
-const [loveMessage, setLoveMessage] = useState("");
+  const [loveMessage, setLoveMessage] = useState("");
+
   return (
     <>
       <style>{`
@@ -111,6 +112,19 @@ const [loveMessage, setLoveMessage] = useState("");
           color:#ff4da6;
         }
 
+        .message-box{
+          margin-top:25px;
+          background:rgba(255,255,255,0.1);
+          padding:18px;
+          border-radius:25px;
+          color:#ffd9ef;
+          font-size:20px;
+          line-height:1.6;
+          backdrop-filter:blur(10px);
+          border:1px solid rgba(255,255,255,0.15);
+          animation:fadeTyping 0.8s ease;
+        }
+
         .card{
           background:rgba(255,255,255,.08);
           border:1px solid rgba(255,255,255,.1);
@@ -183,41 +197,35 @@ const [loveMessage, setLoveMessage] = useState("");
           margin-bottom:30px;
         }
 
-.line{
-  margin:25px 0;
-  font-size:22px;
-  color:#ffe3f4;
-  white-space:normal;
-  word-break:break-word;
-  display:block;
-  max-width:100%;
-  opacity:0;
-  animation:fadeTyping 2s ease forwards;
-}
+        .line{
+          margin:25px 0;
+          font-size:22px;
+          color:#ffe3f4;
+          white-space:normal;
+          word-break:break-word;
+          display:block;
+          max-width:100%;
+          opacity:0;
+          animation:fadeTyping 2s ease forwards;
+        }
 
         .line2{
-          animation-delay:4s;
+          animation-delay:2s;
         }
 
         .line3{
-          animation-delay:8s;
+          animation-delay:4s;
         }
 
         @keyframes fadeTyping{
-  from{
-    opacity:0;
-    transform:translateY(10px);
-  }
+          from{
+            opacity:0;
+            transform:translateY(10px);
+          }
 
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-        @keyframes blink{
-          50%{
-            border-color:transparent;
+          to{
+            opacity:1;
+            transform:translateY(0);
           }
         }
 
@@ -242,10 +250,6 @@ const [loveMessage, setLoveMessage] = useState("");
           color:#8a0057;
           padding:20px;
           text-align:center;
-        }
-
-        .slide-heart{
-          font-size:70px;
         }
 
         @media(max-width:900px){
@@ -279,6 +283,7 @@ const [loveMessage, setLoveMessage] = useState("");
         <div className="container">
 
           <div>
+
             <h1 className="title">
               Every Moment With You
               <span className="pink"> Feels Magical ✨</span>
@@ -287,47 +292,36 @@ const [loveMessage, setLoveMessage] = useState("");
             <p className="desc">
               Shaima, your smile feels like home and your love makes every day beautiful 💕
             </p>
-            
-<div className="buttons">
 
-  <button
-    className="btn pink-btn"
-    onClick={() =>
-      setLoveMessage("You are the most beautiful part of my life 💖")
-    }
-  >
-    I Love You 💖
-  </button>
+            <div className="buttons">
 
-  <button
-    className="btn white-btn"
-    onClick={() =>
-      setLoveMessage("No matter what happens, I’ll always choose you forever ✨")
-    }
-  >
-    Forever Together ✨
-  </button>
+              <button
+                className="btn pink-btn"
+                onClick={() =>
+                  setLoveMessage("You are the most beautiful part of my life 💖")
+                }
+              >
+                I Love You 💖
+              </button>
 
-</div>
+              <button
+                className="btn white-btn"
+                onClick={() =>
+                  setLoveMessage("No matter what happens, I’ll always choose you forever ✨")
+                }
+              >
+                Forever Together ✨
+              </button>
 
-{loveMessage && (
-  <div
-    style={{
-      marginTop: "25px",
-      background: "rgba(255,255,255,0.1)",
-      padding: "18px",
-      borderRadius: "25px",
-      color: "#ffd9ef",
-      fontSize: "20px",
-      lineHeight: "1.6",
-      backdropFilter: "blur(10px)",
-      border: "1px solid rgba(255,255,255,0.15)",
-      animation: "fadeTyping 0.8s ease"
-    }}
-  >
-    {loveMessage}
-  </div>
-)}
+            </div>
+
+            {loveMessage && (
+              <div className="message-box">
+                {loveMessage}
+              </div>
+            )}
+
+          </div>
 
           <div className="card">
 
@@ -360,6 +354,7 @@ const [loveMessage, setLoveMessage] = useState("");
                     />
                   </div>
                 )}
+
               </div>
 
               <div style={{position:"relative"}}>
@@ -379,10 +374,13 @@ const [loveMessage, setLoveMessage] = useState("");
                     />
                   </div>
                 )}
+
               </div>
 
             </div>
+
           </div>
+
         </div>
 
         <div className="lyrics">
@@ -405,39 +403,39 @@ const [loveMessage, setLoveMessage] = useState("");
 
         <div className="slideshow">
 
-  {[
-    "https://cdn.discordapp.com/attachments/1404907350497951765/1508794066232541224/Snapchat-935532469.jpg?ex=6a16d579&is=6a1583f9&hm=08fcd0bb5673397aed2672dcf97a7b872de29f75ddf594989ed38cbd79e222e4&",
-    "https://cdn.discordapp.com/attachments/1404907350497951765/1508794066647912549/Snapchat-987898721.jpg?ex=6a16d579&is=6a1583f9&hm=6fd4ed5128753a41593817f0bce0ad1536a01c6a5d3e0bd0ebdbf7aee536212b&",
-    "https://cdn.discordapp.com/attachments/1404907350497951765/1508794066861690920/IMG_20260524_141512_430.jpg?ex=6a16d579&is=6a1583f9&hm=1f9a0f57b5227179d0f2b531a032731b3b97f144724c054ec232963f3b038ef8&",
-    "https://cdn.discordapp.com/attachments/1404907350497951765/1508794067180326922/IMG_20260524_141526_382.jpg?ex=6a16d579&is=6a1583f9&hm=45e9f09b0b7154232952ed05d64d218aa8dc64e27148b4ebc98b489c259c7f08&",
-    "https://cdn.discordapp.com/attachments/1404907350497951765/1508794067474059345/Snapchat-98385106.jpg?ex=6a16d579&is=6a1583f9&hm=a83cb04e2229a34a89d75daec4128607ea9097d02954efbbe6f4decfedb73ce7&"
-  ].map((pic, index) => (
-    
-        <div className="slide" key={index}>
+          {[
+            "https://cdn.discordapp.com/attachments/1404907350497951765/1508794066232541224/Snapchat-935532469.jpg",
+            "https://cdn.discordapp.com/attachments/1404907350497951765/1508794066647912549/Snapchat-987898721.jpg",
+            "https://cdn.discordapp.com/attachments/1404907350497951765/1508794066861690920/IMG_20260524_141512_430.jpg",
+            "https://cdn.discordapp.com/attachments/1404907350497951765/1508794067180326922/IMG_20260524_141526_382.jpg",
+            "https://cdn.discordapp.com/attachments/1404907350497951765/1508794067474059345/Snapchat-98385106.jpg"
+          ].map((pic, index) => (
 
-      <img
-        src={pic}
-        alt="Shaima"
-        style={{
-          width: "160px",
-          height: "220px",
-          objectFit: "cover",
-          borderRadius: "25px",
-          border: "4px solid white"
-        }}
-      />
+            <div className="slide" key={index}>
 
-      <h2>Shaima 💖</h2>
+              <img
+                src={pic}
+                alt="Shaima"
+                style={{
+                  width: "160px",
+                  height: "220px",
+                  objectFit: "cover",
+                  borderRadius: "25px",
+                  border: "4px solid white"
+                }}
+              />
 
-      <p>
-        My favorite person forever ✨
-      </p>
+              <h2>Shaima 💖</h2>
 
-    </div>
+              <p>
+                My favorite person forever ✨
+              </p>
 
-  ))}
+            </div>
 
-</div>
+          ))}
+
+        </div>
 
       </div>
 
