@@ -367,28 +367,29 @@ export default function App() {
 
         <div className="slideshow">
 
-          {[1,2,3,4,5].map((item) => (
-            <div className="slide" key={item}>
+  {[1,2,3,4,5].map((item) => (
+    <div className="slide" key={item}>
 
-         <div className="slide" key={item}>
+      <img
+        src="https://i.ibb.co/8Df7G5v/photo.jpg"
+        alt="Shaima"
+        style={{
+          width: "160px",
+          height: "220px",
+          objectFit: "cover",
+          borderRadius: "25px",
+          border: "4px solid white"
+        }}
+      />
 
-  <img
-    src="YOUR_IMAGE_LINK"
-    alt="Shaima"
-    style={{
-      width: "160px",
-      height: "220px",
-      objectFit: "cover",
-      borderRadius: "25px",
-      border: "4px solid white"
-    }}
-  />
+      <h2>Shaima</h2>
 
-  <h2>Shaima</h2>
+      <p>
+        Your beautiful photos will appear here ✨
+      </p>
 
-  <p>
-    Your beautiful photos will appear here ✨
-  </p>
+    </div>
+  ))}
 
 </div>
   );
