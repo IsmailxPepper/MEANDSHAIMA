@@ -184,15 +184,18 @@ export default function App() {
         }
 
         .line{
-          margin:25px 0;
-          font-size:22px;
-          color:#ffe3f4;
-          overflow:hidden;
-          white-space:nowrap;
-          border-right:3px solid #ff4da6;
-          width:0;
-          animation:typing 5s steps(40,end) forwards, blink .7s infinite;
-        }
+  margin:25px 0;
+  font-size:22px;
+  color:#ffe3f4;
+  overflow:hidden;
+  border-right:3px solid #ff4da6;
+  width:0;
+  white-space:normal;
+  word-break:break-word;
+  display:inline-block;
+  max-width:100%;
+  animation:typing 5s steps(40,end) forwards, blink .7s infinite;
+}
 
         .line2{
           animation-delay:4s;
