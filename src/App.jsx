@@ -194,7 +194,7 @@ export default function App() {
   word-break:break-word;
   display:inline-block;
   max-width:100%;
-  animation:typing 5s steps(40,end) forwards, blink .7s infinite;
+  animation:fadeTyping 2s ease forwards, blink .7s infinite;
 }
 
         .line2{
@@ -205,15 +205,17 @@ export default function App() {
           animation-delay:8s;
         }
 
-        @keyframes typing{
-          from{
-            width:0;
-          }
+        @keyframes fadeTyping{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
 
-          to{
-            width:100%;
-          }
-        }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
 
         @keyframes blink{
           50%{
