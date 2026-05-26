@@ -1,241 +1,389 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function App() {
   const [showHug, setShowHug] = useState(false);
   const [showKiss, setShowKiss] = useState(false);
 
-  const createHeartExplosion = (e) => {
-    const container = e.currentTarget.parentElement;
-
-    for (let i = 0; i < 15; i++) {
-      const heart = document.createElement('div');
-      heart.innerHTML = '💖';
-      heart.className = 'heart-particle';
-      heart.style.left = `${Math.random() * 100}%`;
-      heart.style.top = `${Math.random() * 100}%`;
-
-      container?.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 1500);
-    }
-  };
-
   return (
     <>
       <style>{`
-        body {
-          margin: 0;
-          overflow-x: hidden;
-          background: #140018;
-          font-family: sans-serif;
+        *{
+          margin:0;
+          padding:0;
+          box-sizing:border-box;
+          font-family:sans-serif;
         }
 
-        .heart-particle {
-          position: absolute;
-          font-size: 28px;
-          animation: explode 1.5s ease-out forwards;
-          pointer-events: none;
+        body{
+          overflow-x:hidden;
+          background:#18001f;
+          color:white;
         }
 
-        @keyframes explode {
-          0% {
-            transform: scale(0.5);
-            opacity: 1;
-          }
-
-          100% {
-            transform: translateY(-150px) scale(1.5);
-            opacity: 0;
-          }
+        .page{
+          min-height:100vh;
+          padding:40px 20px;
+          background:linear-gradient(135deg,#17001f,#32003d,#1d0026);
+          position:relative;
+          overflow:hidden;
         }
 
-        @keyframes floatUp {
-          0% {
-            transform: translateY(0px);
-            opacity: 0;
-          }
-
-          10% {
-            opacity: 1;
-          }
-
-          100% {
-            transform: translateY(-120vh);
-            opacity: 0;
-          }
+        .floating-heart{
+          position:absolute;
+          bottom:-50px;
+          color:#ff4da6;
+          animation:floatUp linear infinite;
+          opacity:.7;
         }
 
-        @keyframes typing {
-          from {
-            width: 0;
+        @keyframes floatUp{
+          0%{
+            transform:translateY(0);
+            opacity:0;
           }
 
-          to {
-            width: 100%;
+          10%{
+            opacity:1;
+          }
+
+          100%{
+            transform:translateY(-120vh);
+            opacity:0;
           }
         }
 
-        @keyframes blink {
-          50% {
-            border-color: transparent;
+        .container{
+          max-width:1200px;
+          margin:auto;
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:50px;
+          align-items:center;
+          position:relative;
+          z-index:2;
+        }
+
+        .title{
+          font-size:70px;
+          font-weight:900;
+          line-height:1.1;
+        }
+
+        .pink{
+          color:#ff4da6;
+        }
+
+        .desc{
+          margin-top:20px;
+          font-size:20px;
+          color:#ffd9ef;
+          line-height:1.6;
+        }
+
+        .buttons{
+          margin-top:30px;
+          display:flex;
+          gap:15px;
+          flex-wrap:wrap;
+        }
+
+        .btn{
+          border:none;
+          padding:15px 28px;
+          border-radius:40px;
+          cursor:pointer;
+          font-size:18px;
+          font-weight:bold;
+          transition:.3s;
+        }
+
+        .btn:hover{
+          transform:scale(1.05);
+        }
+
+        .pink-btn{
+          background:#ff4da6;
+          color:white;
+        }
+
+        .white-btn{
+          background:white;
+          color:#ff4da6;
+        }
+
+        .card{
+          background:rgba(255,255,255,.08);
+          border:1px solid rgba(255,255,255,.1);
+          border-radius:35px;
+          padding:40px;
+          backdrop-filter:blur(20px);
+          text-align:center;
+          position:relative;
+        }
+
+        .card h2{
+          font-size:40px;
+          color:#ff4da6;
+          margin-bottom:20px;
+        }
+
+        .card p{
+          color:#ffe3f4;
+          font-size:18px;
+          line-height:1.7;
+        }
+
+        .emoji{
+          font-size:40px;
+          margin-top:20px;
+        }
+
+        .action-buttons{
+          margin-top:30px;
+          display:flex;
+          gap:15px;
+          justify-content:center;
+          flex-wrap:wrap;
+        }
+
+        .popup{
+          position:absolute;
+          left:50%;
+          transform:translateX(-50%);
+          bottom:90px;
+          background:rgba(255,255,255,.1);
+          padding:15px;
+          border-radius:30px;
+          backdrop-filter:blur(20px);
+          border:1px solid rgba(255,255,255,.2);
+          z-index:50;
+        }
+
+        .popup img{
+          width:500px;
+          max-width:90vw;
+          height:300px;
+          object-fit:cover;
+          border-radius:25px;
+        }
+
+        .lyrics{
+          max-width:900px;
+          margin:70px auto 0;
+          background:rgba(255,255,255,.08);
+          border-radius:35px;
+          padding:40px;
+          text-align:center;
+          backdrop-filter:blur(20px);
+        }
+
+        .lyrics h2{
+          color:#ff4da6;
+          font-size:40px;
+          margin-bottom:30px;
+        }
+
+        .line{
+          margin:25px 0;
+          font-size:22px;
+          color:#ffe3f4;
+          overflow:hidden;
+          white-space:nowrap;
+          border-right:3px solid #ff4da6;
+          width:0;
+          animation:typing 5s steps(40,end) forwards, blink .7s infinite;
+        }
+
+        .line2{
+          animation-delay:4s;
+        }
+
+        .line3{
+          animation-delay:8s;
+        }
+
+        @keyframes typing{
+          from{
+            width:0;
+          }
+
+          to{
+            width:100%;
           }
         }
 
-        .typewriter {
-          overflow: hidden;
-          white-space: nowrap;
-          border-right: 3px solid #ff7ac6;
-          width: 0;
-          animation: typing 5s steps(40, end) forwards, blink 0.8s infinite;
+        @keyframes blink{
+          50%{
+            border-color:transparent;
+          }
+        }
+
+        .slideshow{
+          max-width:1100px;
+          margin:60px auto 0;
+          overflow-x:auto;
+          display:flex;
+          gap:20px;
+          padding-bottom:20px;
+        }
+
+        .slide{
+          min-width:230px;
+          height:320px;
+          border-radius:35px;
+          background:linear-gradient(135deg,#ff9ad5,#ffc6e8,#dca6ff);
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          color:#8a0057;
+          padding:20px;
+          text-align:center;
+        }
+
+        .slide-heart{
+          font-size:70px;
+        }
+
+        @media(max-width:900px){
+          .container{
+            grid-template-columns:1fr;
+          }
+
+          .title{
+            font-size:50px;
+          }
         }
       `}</style>
 
-      <div className="min-h-screen relative overflow-hidden text-white bg-gradient-to-br from-[#1a0024] via-[#32003d] to-[#140018]">
+      <div className="page">
 
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(25)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute bottom-[-40px] text-pink-400"
-              style={{
-                left: `${Math.random() * 100}%`,
-                animation: `floatUp ${5 + Math.random() * 5}s linear infinite`,
-                animationDelay: `${i * 0.3}s`,
-                fontSize: `${20 + Math.random() * 20}px`,
-              }}
-            >
-              💖
-            </div>
-          ))}
-        </div>
+        {[...Array(25)].map((_, i) => (
+          <div
+            key={i}
+            className="floating-heart"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDuration: `${5 + Math.random() * 5}s`,
+              animationDelay: `${i * 0.3}s`,
+              fontSize: `${20 + Math.random() * 25}px`,
+            }}
+          >
+            💖
+          </div>
+        ))}
 
-        <div className="max-w-7xl mx-auto px-4 py-10 relative z-10 grid lg:grid-cols-2 gap-10 items-center">
+        <div className="container">
 
           <div>
-            <div className="inline-block px-5 py-2 rounded-full bg-pink-500/20 border border-pink-300/30 mb-6">
-              💖 You Are My Favorite Person 💖
-            </div>
-
-            <h1 className="text-5xl md:text-7xl font-black leading-tight">
+            <h1 className="title">
               Every Moment With You
-              <span className="block text-pink-400 mt-2">
-                Feels Magical ✨
-              </span>
+              <span className="pink"> Feels Magical ✨</span>
             </h1>
 
-            <p className="mt-6 text-pink-100 text-lg leading-relaxed max-w-xl">
-              Shaima, your smile feels like home and your love makes every single day beautiful 💕
+            <p className="desc">
+              Shaima, your smile feels like home and your love makes every day beautiful 💕
             </p>
 
-            <div className="flex gap-4 mt-8 flex-wrap">
-              <button className="px-8 py-4 rounded-3xl bg-pink-500 hover:scale-105 transition font-bold shadow-2xl">
-                I Love You 💖
-              </button>
-
-              <button className="px-8 py-4 rounded-3xl bg-white text-pink-500 hover:scale-105 transition font-bold shadow-2xl">
-                Forever Together ✨
-              </button>
+            <div className="buttons">
+              <button className="btn pink-btn">I Love You 💖</button>
+              <button className="btn white-btn">Forever Together ✨</button>
             </div>
           </div>
 
-          <div className="relative flex justify-center">
+          <div className="card">
 
-            <div className="absolute w-[400px] h-[400px] bg-pink-500/30 blur-[120px] rounded-full"></div>
+            <h2>To My Beautiful Shaima 💕</h2>
 
-            <div className="relative bg-white/10 backdrop-blur-xl border border-pink-300/20 rounded-[40px] p-8 shadow-[0_0_50px_rgba(255,105,180,0.25)] w-full max-w-xl overflow-visible">
+            <p>
+              You are the reason behind my happiest smiles and warmest memories ❤️
+            </p>
 
-              <h2 className="text-4xl font-black text-pink-400 text-center mb-5">
-                To My Beautiful Shaima 💕
-              </h2>
+            <div className="emoji">
+              ❤️ ✨ 💕 🌸
+            </div>
 
-              <p className="text-pink-100 text-lg text-center leading-relaxed">
-                You are the reason behind my happiest smiles and my warmest memories ❤️
-              </p>
+            <div className="action-buttons">
 
-              <div className="mt-8 text-center text-3xl">
-                ❤️ ✨ 💕 🌸
-              </div>
-
-              <div className="relative grid grid-cols-2 gap-4 mt-10">
+              <div style={{position:"relative"}}>
 
                 <button
-                  onClick={createHeartExplosion}
-                  className="col-span-2 py-4 rounded-3xl bg-gradient-to-r from-pink-500 to-rose-500 font-black text-white hover:scale-105 transition"
+                  className="btn pink-btn"
+                  onClick={() => setShowHug(!showHug)}
                 >
-                  Heart Explosion 💥
+                  Hug Me 🤗
                 </button>
 
-                <div className="relative flex justify-center">
-
-                  <button
-                    onClick={() => setShowHug(!showHug)}
-                    className="bg-pink-500 px-6 py-3 rounded-2xl font-bold hover:scale-105 transition"
-                  >
-                    Hug Me 🤗
-                  </button>
-
-                  {showHug && (
-                    <div className="absolute bottom-20 left-1/2 -translate-x-1/2 bg-pink-200/20 backdrop-blur-xl border border-pink-300/30 rounded-[30px] p-4 shadow-[0_0_50px_rgba(255,105,180,0.45)] z-50">
-                      <img
-                        src="https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif"
-                        alt="hug"
-                        className="w-[500px] max-w-[90vw] h-[300px] object-cover rounded-[24px]"
-                      />
-                    </div>
-                  )}
-                </div>
-
-                <div className="relative flex justify-center">
-
-                  <button
-                    onClick={() => setShowKiss(!showKiss)}
-                    className="bg-white text-pink-500 py-3 px-6 rounded-2xl font-bold hover:scale-105 transition"
-                  >
-                    Kiss Me 💋
-                  </button>
-
-                  {showKiss && (
-                    <div className="absolute bottom-20 left-1/2 -translate-x-1/2 bg-pink-200/20 backdrop-blur-xl border border-pink-300/30 rounded-[30px] p-4 shadow-[0_0_50px_rgba(255,105,180,0.45)] z-50">
-                      <img
-                        src="https://media.giphy.com/media/G3va31oEEnIkM/giphy.gif"
-                        alt="kiss"
-                        className="w-[500px] max-w-[90vw] h-[300px] object-cover rounded-[24px]"
-                      />
-                    </div>
-                  )}
-                </div>
-
+                {showHug && (
+                  <div className="popup">
+                    <img
+                      src="https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif"
+                      alt="hug"
+                    />
+                  </div>
+                )}
               </div>
+
+              <div style={{position:"relative"}}>
+
+                <button
+                  className="btn white-btn"
+                  onClick={() => setShowKiss(!showKiss)}
+                >
+                  Kiss Me 💋
+                </button>
+
+                {showKiss && (
+                  <div className="popup">
+                    <img
+                      src="https://media.giphy.com/media/G3va31oEEnIkM/giphy.gif"
+                      alt="kiss"
+                    />
+                  </div>
+                )}
+              </div>
+
             </div>
           </div>
         </div>
 
-        <section className="max-w-5xl mx-auto px-4 pb-10 relative z-10">
-          <div className="bg-white/10 backdrop-blur-xl rounded-[35px] p-8 border border-pink-300/20 text-center">
+        <div className="lyrics">
 
-            <h2 className="text-4xl font-black text-pink-400 mb-8">
-              Love Lyrics 🎶
-            </h2>
+          <h2>Love Lyrics 🎶</h2>
 
-            <div className="space-y-6 flex flex-col items-center text-pink-100 text-lg">
+          <div className="line">
+            “Every heartbeat whispers your name...” 💖
+          </div>
 
-              <p className="typewriter italic">
-                “Every heartbeat whispers your name...” 💖
-              </p>
+          <div className="line line2">
+            “You make my whole world brighter...” ✨
+          </div>
 
-              <p className="typewriter italic" style={{ animationDelay: '4s' }}>
-                “You make my world brighter...” ✨
-              </p>
+          <div className="line line3">
+            “Forever doesn’t feel long enough with you...” 🌸
+          </div>
 
-              <p className="typewriter italic" style={{ animationDelay: '8s' }}>
-                “Forever doesn’t feel long enough with you...” 🌸
+        </div>
+
+        <div className="slideshow">
+
+          {[1,2,3,4,5].map((item) => (
+            <div className="slide" key={item}>
+
+              <div className="slide-heart">
+                💖
+              </div>
+
+              <h2>Shaima</h2>
+
+              <p>
+                Your beautiful photos will appear here ✨
               </p>
 
             </div>
-          </div>
-        </section>
+          ))}
+
+        </div>
 
       </div>
     </>
