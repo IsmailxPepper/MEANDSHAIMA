@@ -367,11 +367,18 @@ export default function App() {
 
         <div className="slideshow">
 
-  {[1,2,3,4,5].map((item) => (
-    <div className="slide" key={item}>
+  {[
+    "https://cdn.discordapp.com/attachments/1404907350497951765/1508794066232541224/Snapchat-935532469.jpg?ex=6a16d579&is=6a1583f9&hm=08fcd0bb5673397aed2672dcf97a7b872de29f75ddf594989ed38cbd79e222e4&",
+    "https://cdn.discordapp.com/attachments/1404907350497951765/1508794066647912549/Snapchat-987898721.jpg?ex=6a16d579&is=6a1583f9&hm=6fd4ed5128753a41593817f0bce0ad1536a01c6a5d3e0bd0ebdbf7aee536212b&",
+    "https://cdn.discordapp.com/attachments/1404907350497951765/1508794066861690920/IMG_20260524_141512_430.jpg?ex=6a16d579&is=6a1583f9&hm=1f9a0f57b5227179d0f2b531a032731b3b97f144724c054ec232963f3b038ef8&",
+    "https://cdn.discordapp.com/attachments/1404907350497951765/1508794067180326922/IMG_20260524_141526_382.jpg?ex=6a16d579&is=6a1583f9&hm=45e9f09b0b7154232952ed05d64d218aa8dc64e27148b4ebc98b489c259c7f08&",
+    "https://cdn.discordapp.com/attachments/1404907350497951765/1508794067474059345/Snapchat-98385106.jpg?ex=6a16d579&is=6a1583f9&hm=a83cb04e2229a34a89d75daec4128607ea9097d02954efbbe6f4decfedb73ce7&"
+  ].map((pic, index) => (
+    
+    <div className="slide" key={index}>
 
       <img
-        src="https://i.ibb.co/8Df7G5v/photo.jpg"
+        src={pic}
         alt="Shaima"
         style={{
           width: "160px",
@@ -382,15 +389,14 @@ export default function App() {
         }}
       />
 
-      <h2>Shaima</h2>
+      <h2>Shaima 💖</h2>
 
       <p>
-        Your beautiful photos will appear here ✨
+        My favorite person forever ✨
       </p>
 
     </div>
+
   ))}
 
 </div>
-  );
-}
