@@ -370,31 +370,26 @@ export default function App() {
           {[1,2,3,4,5].map((item) => (
             <div className="slide" key={item}>
 
-          <img
-  src="YOUR_IMAGE_LINK"
-  alt="Shaima"
-  style={{
-    width: "160px",
-    height: "220px",
-    objectFit: "cover",
-    borderRadius: "25px",
-    border: "4px solid white"
-  }}
-/>
-              </div>
+         <div className="slide" key={item}>
 
-              <h2>Shaima</h2>
+  <img
+    src="YOUR_IMAGE_LINK"
+    alt="Shaima"
+    style={{
+      width: "160px",
+      height: "220px",
+      objectFit: "cover",
+      borderRadius: "25px",
+      border: "4px solid white"
+    }}
+  />
 
-              <p>
-                Your beautiful photos will appear here ✨
-              </p>
+  <h2>Shaima</h2>
 
-            </div>
-          ))}
+  <p>
+    Your beautiful photos will appear here ✨
+  </p>
 
-        </div>
-
-      </div>
-    </>
+</div>
   );
 }
