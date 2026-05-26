@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function App() {
   const [showHug, setShowHug] = useState(false);
   const [showKiss, setShowKiss] = useState(false);
-
+const [loveMessage, setLoveMessage] = useState("");
   return (
     <>
       <style>{`
@@ -289,10 +289,46 @@ export default function App() {
             </p>
 
             <div className="buttons">
-              <button className="btn pink-btn">I Love You 💖</button>
-              <button className="btn white-btn">Forever Together ✨</button>
-            </div>
-          </div>
+             <div className="buttons">
+
+  <button
+    className="btn pink-btn"
+    onClick={() =>
+      setLoveMessage("You are the most beautiful part of my life 💖")
+    }
+  >
+    I Love You 💖
+  </button>
+
+  <button
+    className="btn white-btn"
+    onClick={() =>
+      setLoveMessage("No matter what happens, I’ll always choose you forever ✨")
+    }
+  >
+    Forever Together ✨
+  </button>
+
+</div>
+
+{loveMessage && (
+  <div
+    style={{
+      marginTop: "25px",
+      background: "rgba(255,255,255,0.1)",
+      padding: "18px",
+      borderRadius: "25px",
+      color: "#ffd9ef",
+      fontSize: "20px",
+      lineHeight: "1.6",
+      backdropFilter: "blur(10px)",
+      border: "1px solid rgba(255,255,255,0.15)",
+      animation: "fadeTyping 0.8s ease"
+    }}
+  >
+    {loveMessage}
+  </div>
+)}
 
           <div className="card">
 
